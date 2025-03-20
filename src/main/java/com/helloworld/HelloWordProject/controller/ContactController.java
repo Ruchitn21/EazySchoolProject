@@ -1,8 +1,10 @@
 package com.helloworld.HelloWordProject.controller;
 
 import com.helloworld.HelloWordProject.model.Contact;
+import com.helloworld.HelloWordProject.service.ContactService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +15,13 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class ContactController {
 
     private final Logger logger = LoggerFactory.getLogger(ContactController.class);
+
+    private ContactService contactService;
+
+    @Autowired
+    public ContactController(ContactService contactService) {
+        this.contactService = contactService;
+    }
 
     @RequestMapping("/contact")
     public String getContactPage() {
@@ -36,6 +45,7 @@ public class ContactController {
     @RequestMapping(value = "/saveMsg", method = POST)
     public ModelAndView saveMessage(Contact contact) {
 
+        contactService.saveMessageDetails(contact);
         return new ModelAndView("redirect:/contact");
 
     }
