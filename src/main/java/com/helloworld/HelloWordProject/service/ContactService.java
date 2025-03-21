@@ -1,14 +1,14 @@
 package com.helloworld.HelloWordProject.service;
 
 import com.helloworld.HelloWordProject.model.Contact;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class ContactService {
 
-    Logger logger = LoggerFactory.getLogger(ContactService.class);
+//    Logger logger = LoggerFactory.getLogger(ContactService.class); not required because of @Slf4j annotation
 
     public boolean saveMessageDetails(Contact contact) {
 
