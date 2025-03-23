@@ -1,14 +1,31 @@
 package com.helloworld.HelloWordProject.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+
+import jakarta.annotation.Generated;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Data
-public class Contact {
+@EqualsAndHashCode(callSuper = true)
+@Entity
+@Table(name = "contact_msg")
+public class Contact extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "contact_id")
+    private int contactId;
 
     /*
     * @NotNull: Checks if a given field is not null but allows empty values & zero elements inside collections.
@@ -34,4 +51,6 @@ public class Contact {
     @NotBlank(message="Message must not be blank")
     @Size(min=10, message="Message must be at least 10 characters long")
     private String message;
+
+    private String status;
 }

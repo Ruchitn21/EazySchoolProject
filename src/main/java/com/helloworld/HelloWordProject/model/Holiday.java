@@ -1,22 +1,25 @@
 package com.helloworld.HelloWordProject.model;
 
-import lombok.Getter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
 
-@Getter
-public class Holiday {
+@Data
+@Entity
+@Table(name = "holidays")
+public class Holiday extends BaseEntity {
 
-    private final String day;
-    private final String reason;
-    private final Type type;
+    @Id
+    private String day;
+    private String reason;
+    @Enumerated(EnumType.STRING)
+    private Type type;
 
     public enum Type {
         FESTIVAL, FEDERAL;
-    }
-
-    public Holiday(String day, String reason, Type type) {
-        this.day = day;
-        this.reason = reason;
-        this.type = type;
     }
 
 }
