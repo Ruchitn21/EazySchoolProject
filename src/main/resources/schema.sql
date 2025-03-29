@@ -1,3 +1,4 @@
+
 create database eazyschool;
 
 use eazyschool;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.helloworld.HelloWordProject.model.Holiday;
 
 @Repository
-public interface HolidayRepository extends CrudRepository<Holiday, String> {
+public interface HolidayRepository extends CrudRepository<Holiday, Integer> {
 
     // private final JdbcTemplate jdbcTemplate;
 
