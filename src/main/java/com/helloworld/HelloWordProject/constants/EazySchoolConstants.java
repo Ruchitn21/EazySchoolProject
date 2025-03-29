@@ -6,6 +6,6 @@ import lombok.Data;
 public class EazySchoolConstants {
     
     public enum Constant {
-        OPEN, ANONYMOUS, CLOSE;
+        OPEN, ANONYMOUS, CLOSE, STUDENT, ADMIN;
     }
 }
